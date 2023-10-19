@@ -12,21 +12,27 @@ export default function Welcome() {
   }, []);
   return (
     <Container>
-      <img src={Robot} alt="" />
-      <h1>
-        Welcome, <span>{userName}!</span>
-      </h1>
-      <h3>Please select a chat to Start messaging.</h3>
+      <div className="top">
+    <h1> Task Board</h1>
+    <h1 >Welcome <span>{userName} </span> </h1>
+      </div>
     </Container>
   );
 }
 
 const Container = styled.div`
   display: flex;
-  justify-content: center;
+  padding: 1rem;
   align-items: center;
   color: white;
   flex-direction: column;
+  .top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    
+  }
   img {
     height: 20rem;
   }

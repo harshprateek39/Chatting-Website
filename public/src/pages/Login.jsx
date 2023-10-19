@@ -66,8 +66,8 @@ export default function Login() {
       <FormContainer>
         <form action="" onSubmit={(event) => handleSubmit(event)}>
           <div className="brand">
-            <img src={Logo} alt="logo" />
-            <h1>snappy</h1>
+            
+            <h1>Chat App</h1>
           </div>
           <input
             type="text"

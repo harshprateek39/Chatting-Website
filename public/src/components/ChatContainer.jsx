@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import ChatInput from "./ChatInput";
+import BackButton from "./BackButton";
 import Logout from "./Logout";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import { sendMessageRoute, recieveMessageRoute } from "../utils/APIRoutes";
 
-export default function ChatContainer({ currentChat, socket }) {
+export default function ChatContainer({ currentChat, socket ,changeChat }) {
   const [messages, setMessages] = useState([]);
   const scrollRef = useRef();
   const [arrivalMessage, setArrivalMessage] = useState(null);
@@ -83,7 +84,11 @@ export default function ChatContainer({ currentChat, socket }) {
             <h3>{currentChat.username}</h3>
           </div>
         </div>
-        <Logout />
+        <div className="navBtn">
+        <BackButton changeChat={changeChat}/>
+        <Logout  />
+        </div>
+       
       </div>
       <div className="chat-messages">
         {messages.map((message) => {
@@ -109,6 +114,8 @@ export default function ChatContainer({ currentChat, socket }) {
 
 const Container = styled.div`
   display: grid;
+  
+  border: 1px solid #ffffff39;
   grid-template-rows: 10% 80% 10%;
   gap: 0.1rem;
   overflow: hidden;
@@ -134,6 +141,11 @@ const Container = styled.div`
           color: white;
         }
       }
+    }
+    .navBtn {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
   }
   .chat-messages {
