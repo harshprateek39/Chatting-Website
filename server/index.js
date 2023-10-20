@@ -10,11 +10,12 @@ require("dotenv").config();
 app.use(cors());
 app.use(express.json());
 app.get('/', function (req, res) { 
-  res.json({msg: process.env.PORT});
+  console.log("process.env.PORT", process.env.PORT);
+  res.json({"msg": process.env.PORT});
 }) 
 
 mongoose
-  .connect(process.env.MONGO_URL, {
+  .connect(process.env.MONGO_URL, { 
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
