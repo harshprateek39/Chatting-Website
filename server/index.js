@@ -10,17 +10,17 @@ require("dotenv").config();
 app.use(cors());
 app.use(express.json());
 app.get('/', function (req, res) { 
-  console.log("process.env.PORT", process.env.PORT);
-  res.json({"msg": process.env.PORT});
+  res.send('Hello World!')
 }) 
 
 mongoose
-  .connect(process.env.MONGO_URL, { 
+  .connect("mongodb+srv://piscesscorpio11819:J6DemDu1RhEPbfCR@cluster0.yecpvrw.mongodb.net/?retryWrites=true&w=majority", { 
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => {
     console.log("DB Connetion Successfull");
+
   })
   .catch((err) => {
     console.log(err.message);
@@ -29,8 +29,8 @@ mongoose
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
-const server = app.listen(process.env.PORT, () =>
-  console.log(`Server started on ${process.env.PORT}`)
+const server = app.listen(5000, () =>
+  console.log(`Server started `)
 );
 const io = socket(server, { cors: { origin: "*" } });
 
